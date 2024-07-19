@@ -1,14 +1,42 @@
 import { Component } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {
+  BrowserRouter as Router,
+  Routes, Route
+} from "react-router-dom"
 import './App.css'
+import Header from './components/Header/Header'
+import CategoryPage from './pages/CategoryPage'
+import NotFound from './pages/404.'
 
 
 class App extends Component {
   render() {
     return (
       <>
-        <h2 className='text-mainColor'>Hello World</h2>
+        <Header />
+        <Router>
+          <Routes>
+            <Route
+              path='/women'
+              element={<CategoryPage category="Women" />}
+            />
+            <Route
+              path='/Men'
+              element={<CategoryPage category="men" />}
+            />
+            <Route
+              path='/kids'
+              element={<CategoryPage category="kids" />}
+            />
+
+
+            {/* If the user manullay add router */}
+            <Route
+              path='*'
+              element={<NotFound />}
+            />
+          </Routes>
+        </Router>
       </>
     )
   }
