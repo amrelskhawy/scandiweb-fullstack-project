@@ -28,6 +28,10 @@ class App extends Component {
             />
           ))}
 
+          <Route
+            path={`/:category/:id`}
+            element={<ProductDetails  />}
+          />
 
           {/* If the user manullay add router */}
           <Route
