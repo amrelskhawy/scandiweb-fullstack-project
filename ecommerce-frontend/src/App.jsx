@@ -1,11 +1,10 @@
 import { Component } from 'react'
 import {
-  BrowserRouter as Router,
   Routes, Route
 } from "react-router-dom"
 import './App.css'
 import Header from './components/Header/Header'
-import CategoryPage from './pages/CategoryPage'
+import CategoryPage from './pages/CategoryPage/CategoryPage'
 import NotFound from './pages/404.'
 
 
@@ -14,8 +13,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Router>
-          <Routes>
+        <Routes>
             <Route
               path='/women'
               element={<CategoryPage category="Women" />}
@@ -36,7 +34,6 @@ class App extends Component {
               element={<NotFound />}
             />
           </Routes>
-        </Router>
       </>
     )
   }
