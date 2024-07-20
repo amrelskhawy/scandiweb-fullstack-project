@@ -6,34 +6,35 @@ import './App.css'
 import Header from './components/Header/Header'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
 import NotFound from './pages/404.'
+import ProductDetails from './pages/ProductDetails/ProductDetails'
 
 
 class App extends Component {
+
+  state = {
+    categories: ['women', 'men', 'kids']
+  }
+
   render() {
     return (
       <>
         <Header />
         <Routes>
+          {this.state.categories.map(category => (
             <Route
-              path='/women'
-              element={<CategoryPage category="Women" />}
+              key={category}
+              path={`/${category}`}
+              element={<CategoryPage category={category} />}
             />
-            <Route
-              path='/Men'
-              element={<CategoryPage category="men" />}
-            />
-            <Route
-              path='/kids'
-              element={<CategoryPage category="kids" />}
-            />
+          ))}
 
 
-            {/* If the user manullay add router */}
-            <Route
-              path='*'
-              element={<NotFound />}
-            />
-          </Routes>
+          {/* If the user manullay add router */}
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
+        </Routes>
       </>
     )
   }
