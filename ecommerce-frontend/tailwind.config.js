@@ -8,7 +8,8 @@ export default {
     extend: {
       colors:
       {
-        'mainColor': '#5ece7b'
+        'mainColor': '#5ece7b',
+        'darkColor': '#1D1F22'
       }
 
     },
