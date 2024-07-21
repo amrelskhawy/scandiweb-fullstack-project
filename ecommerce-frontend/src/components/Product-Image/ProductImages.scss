@@ -1,0 +1,26 @@
+.product-images {
+
+    &__wrapper {
+        @apply flex gap-2;
+
+    }
+    
+    &__mainImage {
+        @apply  flex-1 py-1 px-8 ;
+
+        > img {
+            @apply w-full h-full;
+        }
+    }
+
+    &__preview {
+
+        @apply grid gap-4;
+
+        .image__preview {
+            width: 8rem;
+            height: 7rem;
+        }
+
+    }
+}
