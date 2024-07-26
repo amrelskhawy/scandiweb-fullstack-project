@@ -1,21 +1,41 @@
 import { Component } from "react";
 import "./ProductImages.scss"
+import { 
+  IoIosArrowForward,
+  IoIosArrowBack 
+ } from "react-icons/io";
 
 
 export class ProductImages extends Component {
+  state = {
+    images : this.props.images || [],
+    selected : 0
+  }
+
   render() {
+
+
+
     return (
       <div className="product-images__wrapper">
-        <div className="product-images__preview">
+        <div className="product-images__preview max-h-fit">
           {
-            [1,2,3,4, 5].map(el => (
+            this.state.images.map(image => (
 
-              <img key={el} className="image__preview" src="/Image.png" alt="" />
+              <img key={image} className="image__preview" src={image} alt="" />
             ))
           }
         </div>
         <div className="product-images__mainImage">
-          <img src="/Image.png" alt="" />
+          {/* left Arrow */}
+          <IoIosArrowBack />
+          {/* Main Image */}
+          <img className="w-full h-full max-h-[950px] object-cover object-top" src={this.state.images[
+            this.state.selected
+          ]} alt="" />
+
+          {/* Right Arrow */}
+          <IoIosArrowForward />
         </div>
       </div>
     )

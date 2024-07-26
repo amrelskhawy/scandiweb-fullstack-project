@@ -74,16 +74,16 @@ class ProductDetails extends Component {
     }
   }
   render() {
-    const { name, prices, description } = this.state.product
+    const { name, prices, description, gallery } = this.state.product
     return (
       <>
         <div className="container">
           <div className="product-wrapper flex ">
             {/* Product Images */}
             <div className="images-container flex-1">
-              <ProductImages />
+              <ProductImages images={gallery} />
             </div>
-            <div className="content-container w-[540px] text-2xl grid gap-5">
+            <div className="content-container w-[540px] text-2xl ">
               <h2 className="text-5xl mb-6 font-semibold">{name}</h2>
 
               {
