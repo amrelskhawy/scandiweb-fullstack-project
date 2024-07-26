@@ -3,10 +3,78 @@ import { Link } from "react-router-dom";
 import "./ProductDetails.scss"
 import Button from "../../components/Button";
 import { ProductImages } from "../../components/Product-Image/ProductImage";
+import parse from 'html-react-parser';
 
 
 class ProductDetails extends Component {
+
+  state = {
+    product: {
+      "id": "jacket-canada-goosee",
+      "name": "Jacket",
+      "inStock": true,
+      "gallery": [
+        "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg",
+        "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016107/product-image/2409L_61_a.jpg",
+        "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016108/product-image/2409L_61_b.jpg",
+        "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016109/product-image/2409L_61_c.jpg",
+        "https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016110/product-image/2409L_61_d.jpg",
+        "https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058169/product-image/2409L_61_o.png",
+        "https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058159/product-image/2409L_61_p.png"
+      ],
+      "description": "<p>Awesome winter jacket</p>",
+      "category": "clothes",
+      "attributes": [
+        {
+          "id": "Size",
+          "items": [
+            {
+              "displayValue": "Small",
+              "value": "S",
+              "id": "Small",
+              "__typename": "Attribute"
+            },
+            {
+              "displayValue": "Medium",
+              "value": "M",
+              "id": "Medium",
+              "__typename": "Attribute"
+            },
+            {
+              "displayValue": "Large",
+              "value": "L",
+              "id": "Large",
+              "__typename": "Attribute"
+            },
+            {
+              "displayValue": "Extra Large",
+              "value": "XL",
+              "id": "Extra Large",
+              "__typename": "Attribute"
+            }
+          ],
+          "name": "Size",
+          "type": "text",
+          "__typename": "AttributeSet"
+        }
+      ],
+      "prices": [
+        {
+          "amount": 518.47,
+          "currency": {
+            "label": "USD",
+            "symbol": "$",
+            "__typename": "Currency"
+          },
+          "__typename": "Price"
+        }
+      ],
+      "brand": "Canada Goose",
+      "__typename": "Product"
+    }
+  }
   render() {
+    const { name, prices, description } = this.state.product
     return (
       <>
         <div className="container">
@@ -16,46 +84,41 @@ class ProductDetails extends Component {
               <ProductImages />
             </div>
             <div className="content-container w-[540px] text-2xl grid gap-5">
-              <h2 className="text-5xl mb-6 font-semibold">Running Shorts</h2>
-              <div className="sizes variant-section">
-                <h4 className="variant-section__title">SIZE:</h4>
-                <div>
-                  {
-                    ["XS", "S", "M", "L"]
-                      .map(size => (
-                        <span className="size-span">{size}</span>
+              <h2 className="text-5xl mb-6 font-semibold">{name}</h2>
 
-                      ))
-                  }
-                </div>
-              </div>
+              {
+                this.state.product.attributes.map(attr => {
 
-              <div className="colors variant-section">
-                <h4 className="variant-section__title">Color:</h4>
-                <div>
-                  {
-                    ["#D3D2D5", "#2B2B2B", "#0F6450"]
-                      .map(color => (
-                        <span key={'color-' + color} style={{
-                          background: color
-                        }} className={`color-span`} />
+                  const { id, name, items } = attr
 
-                      ))
-                  }
-                </div>
-              </div>
+                  return (
+
+                    <div key={id} id={id} className="variant-section">
+                      <h4 className="variant-section__title uppercase">{name} :</h4>
+                      <div>
+                        {
+                          items.map(item => (
+                            <span key={item.id} className="variant-item-span">{item.value}</span>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  )
+                })
+              }
 
               <div className="prices variant-section">
                 <h4 className="variant-section__title">Price:</h4>
-                <p className="price">$50.00</p>
+                <p className="price">{prices[0].currency.symbol}{prices[0].amount}</p>
               </div>
 
 
               <Button title="ADD TO CART" />
 
-              <p className="desc leading-10 font-medium mt-8">
-                Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.
-              </p>
+              <div className="desc leading-10 font-medium mt-8">
+                {parse(description)}
+
+              </div>
 
             </div>
           </div>
