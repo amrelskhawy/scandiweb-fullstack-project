@@ -65,10 +65,10 @@ class Header extends Component {
             }
           </div>
           {/* Shop Icon */}
-          <img height={41} width={41} src="Icon/a-logo.png" alt="" />
+          <img height={41} width={41} src="/Icon/a-logo.png" alt="" />
           {/* Cart Button */}
           <button>
-            <img src="Icon/Empty Cart.png" alt="" />
+            <img src="/Icon/Empty Cart.png" alt="" />
           </button>
         </div>
       </header>
