@@ -97,6 +97,7 @@ class ProductDetails extends Component {
       "__typename": "Product"
     }
   }
+  
   render() {
     const { name, prices, description, gallery } = this.state.product
     return (
