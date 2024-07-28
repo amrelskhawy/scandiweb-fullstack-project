@@ -1,24 +1,35 @@
 import { Component } from "react";
 import "./ProductImages.scss"
-import { 
+import {
   IoIosArrowForward,
-  IoIosArrowBack 
- } from "react-icons/io";
+  IoIosArrowBack
+} from "react-icons/io";
 
 
 export class ProductImages extends Component {
   state = {
-    images : this.props.images || [],
-    // selected : 0
+    images: this.props.images || [],
+    selected: 0
   }
 
 
   slider(direction) {
-    if ( direction === 'forward' ) {
-      this.setState = {
-        // selected : this.state.selected + 1
-      }
+    console.log(direction);
+    console.log(this.state.selected);
+    if (direction === 'forward' &&
+      this.state.selected < this.state.images.length - 1) {
+      this.setState({
+        selected: this.state.selected + 1
+      })
     }
+
+    else if (direction === 'backward' &&
+      this.state.selected > 0) {
+      this.setState({
+        selected: this.state.selected - 1
+      })
+    }
+
   }
 
   render() {
@@ -37,12 +48,12 @@ export class ProductImages extends Component {
         </div>
         <div className="product-images__mainImage">
           {/* left Arrow */}
-          <IoIosArrowBack onClick={this.slider('forward')} className="carousel-arrow left-12" />
+          <IoIosArrowBack onClick={() => this.slider('backward')} className="carousel-arrow left-12" />
           {/* Main Image */}
-          <img className="w-full h-full max-h-[950px] object-cover object-top" src={this.state.images[0]} alt="product-image" />
+          <img className="w-full h-full max-h-[950px] object-cover object-top" src={this.state.images[this.state.selected]} alt="product-image" />
 
           {/* Right Arrow */}
-          <IoIosArrowForward className="carousel-arrow right-12" />
+          <IoIosArrowForward onClick={() => this.slider('forward')} className="carousel-arrow right-12" />
         </div>
       </div>
     )
