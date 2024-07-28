@@ -108,7 +108,7 @@ class ProductDetails extends Component {
               <ProductImages images={gallery} />
             </div>
             <div className="content-container w-[540px] text-2xl ">
-              <h2 className="text-5xl mb-6 font-semibold">{name}</h2>
+              <h2 className="text-4xl mb-6 font-semibold">{name}</h2>
 
               {
                 this.state.product.attributes.map(attr => {
@@ -140,7 +140,8 @@ class ProductDetails extends Component {
               <Button title="ADD TO CART" />
 
               <div className="desc leading-10 font-medium mt-8">
-                {parse(description)}
+                {/* {parse(description)} */}
+                {description.length > 300 ? parse(description.slice(0,300))  : description}
 
               </div>
 
