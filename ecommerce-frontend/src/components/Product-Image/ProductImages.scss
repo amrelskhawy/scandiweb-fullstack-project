@@ -11,6 +11,10 @@
         > img {
             @apply w-full  h-full;
         }
+
+        .carousel-arrow {
+            @apply absolute cursor-pointer bg-darkColor/75 text-3xl p-1 text-white top-1/2 -translate-y-1/2;
+        }
     }
 
     &__preview {
@@ -22,4 +26,5 @@
         }
 
     }
+    
 }

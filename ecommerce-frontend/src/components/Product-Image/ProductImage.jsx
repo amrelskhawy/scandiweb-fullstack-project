@@ -9,7 +9,16 @@ import {
 export class ProductImages extends Component {
   state = {
     images : this.props.images || [],
-    selected : 0
+    // selected : 0
+  }
+
+
+  slider(direction) {
+    if ( direction === 'forward' ) {
+      this.setState = {
+        // selected : this.state.selected + 1
+      }
+    }
   }
 
   render() {
@@ -28,14 +37,12 @@ export class ProductImages extends Component {
         </div>
         <div className="product-images__mainImage">
           {/* left Arrow */}
-          <IoIosArrowBack />
+          <IoIosArrowBack onClick={this.slider('forward')} className="carousel-arrow left-12" />
           {/* Main Image */}
-          <img className="w-full h-full max-h-[950px] object-cover object-top" src={this.state.images[
-            this.state.selected
-          ]} alt="" />
+          <img className="w-full h-full max-h-[950px] object-cover object-top" src={this.state.images[0]} alt="product-image" />
 
           {/* Right Arrow */}
-          <IoIosArrowForward />
+          <IoIosArrowForward className="carousel-arrow right-12" />
         </div>
       </div>
     )
