@@ -7,8 +7,8 @@ class Header extends Component {
     navLinks: [
       {
         id: 1,
-        title: 'Women',
-        link: '/women',
+        title: 'All',
+        link: '/all',
         active: false
       },
       {
