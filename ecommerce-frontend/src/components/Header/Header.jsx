@@ -8,7 +8,7 @@ class Header extends Component {
       {
         id: 1,
         title: 'All',
-        link: '/all',
+        link: '/',
         active: false
       },
       {

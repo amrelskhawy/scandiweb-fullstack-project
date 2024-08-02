@@ -12,7 +12,7 @@ import ProductDetails from './pages/ProductDetails/ProductDetails'
 class App extends Component {
 
   state = {
-    categories: ['women', 'men', 'kids']
+    categories: ['all', 'men', 'kids']
   }
 
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
           {this.state.categories.map(category => (
             <Route
               key={category}
-              path={`/${category}`}
+              path={`${category === 'all' ? '/' : '/' + category}`}
               element={<CategoryPage category={category} />}
             />
           ))}
